@@ -17,7 +17,7 @@ function todoAdd(){
     obj.id = new Date().getTime();
     data.push(obj); 
     renderData()
-    console.log(data); /*test*/ 
+    // console.log(data); /*test*/ 
 }
 
 // 用enter新增代辦事項
@@ -30,8 +30,8 @@ todoText.addEventListener("keyup",function(e){
 // 刪除代辦事項
 list.addEventListener("click",(e) => {
     let id = parseInt(e.target.dataset.id);
-    console.log(id); /*test*/ 
-    console.log(typeof id); /*test*/
+    // console.log(id); /*test*/ 
+    // console.log(typeof id); /*test*/
     if(e.target.classList.contains("delete")){
         e.preventDefault();
         data.splice(id,1);
