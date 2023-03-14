@@ -6,7 +6,7 @@ const btn_add = document.querySelector(".btn_add");
 const todoNotDoneCount = document.querySelector(".todoNotDoneCount");
 const doneClear = document.querySelector(".doneClear");
 const tab = document.querySelector(".tab");
-// console.log();
+
 
 // 新增代辦事項到data裡
 btn_add.addEventListener("click",todoAdd);
@@ -17,7 +17,6 @@ function todoAdd(){
     obj.id = new Date().getTime();
     data.push(obj); 
     renderData()
-    // console.log(data); /*test*/ 
 }
 
 // 用enter新增代辦事項
@@ -30,8 +29,6 @@ todoText.addEventListener("keyup",function(e){
 // 刪除代辦事項
 list.addEventListener("click",(e) => {
     let id = parseInt(e.target.dataset.id);
-    // console.log(id); /*test*/ 
-    // console.log(typeof id); /*test*/
     if(e.target.classList.contains("delete")){
         e.preventDefault();
         data.splice(id,1);
