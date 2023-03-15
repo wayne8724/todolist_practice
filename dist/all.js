@@ -1,4 +1,4 @@
-const data = [];
+let data = [];
 
 const todoText = document.querySelector(".todoText");
 const list = document.querySelector(".list");
@@ -16,7 +16,8 @@ function todoAdd(){
     obj.checked = false;
     obj.id = new Date().getTime();
     data.push(obj); 
-    renderData()
+    renderData();
+    todoText.value = "";
 }
 
 // 用enter新增代辦事項
@@ -40,12 +41,13 @@ list.addEventListener("click",(e) => {
 
 //一鍵清除完成之項目
 doneClear.addEventListener("click",todoClear);
-function todoClear(){
-    data.forEach((item,index) => {
-        if(item.checked == true){
-            data.splice(index,1);
-        }
+function todoClear(e){
+    e.preventDefault();
+    let deleteData = [];
+    deleteData = data.filter((item) => {
+        return item.checked == false ;
     })
+    data = deleteData;
     renderData();
 }
 

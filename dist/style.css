@@ -235,3 +235,7 @@ input[type=text]::placeholder {
 .checkbox input:checked ~ span::after {
   opacity: 1;
 }
+
+.card_list ul li{
+  cursor: pointer;
+}
