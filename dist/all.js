@@ -11,6 +11,10 @@ const tab = document.querySelector(".tab");
 // 新增代辦事項到data裡
 btn_add.addEventListener("click",todoAdd);
 function todoAdd(){
+    if(todoText.value == ""){
+        alert("請輸入代辦事項");
+        return;
+    }
     let obj = {};
     obj.todoText = todoText.value;
     obj.checked = false;
