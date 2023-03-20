@@ -16,10 +16,10 @@ function todoAdd(){
         return;
     }
     let obj = {};
-    obj.todoText = todoText.value;
+    obj.todoText = todoText.value.trim();
     obj.checked = false;
     obj.id = new Date().getTime();
-    data.push(obj); 
+    data.push(obj);
     renderData();
     todoText.value = "";
 }
@@ -33,11 +33,11 @@ todoText.addEventListener("keyup",function(e){
 
 // 刪除代辦事項
 list.addEventListener("click",(e) => {
-    let id = parseInt(e.target.dataset.id);
+    let id = parseInt(e.target.dataset.id); 
     if(e.target.classList.contains("delete")){
         e.preventDefault();
         data.splice(id,1);
-    }else{
+    }else if(e.target.nodeName == "INPUT"){
         data[id].checked = !data[id].checked;  /*點擊input時將data裡的checked的狀態變為相反之狀態*/
     }
     renderData();
@@ -77,17 +77,17 @@ function renderData(){
     data.forEach((item,index) => {
         if(targetState == "all"){
             if(item.checked == false){
-                str += `<li><label class="checkbox" for=""><input type="checkbox" ${item.checked} data-id=${index}/><span>${item.todoText}</span></label><a href="#" class="delete"></a></li>`;
+                str += `<li><label class="checkbox" for=""><input type="checkbox" ${item.checked} data-id=${index} /><span>${item.todoText}</span></label><a href="#" class="delete" data-id=${index}></a></li>`;
             }else if(item.checked == true){
-                str += `<li><label class="checkbox" for=""><input type="checkbox" ${item.checked} data-id=${index} checked/><span>${item.todoText}</span></label><a href="#" class="delete"></a></li>`;
+                str += `<li><label class="checkbox" for=""><input type="checkbox" ${item.checked} data-id=${index} checked/><span>${item.todoText}</span></label><a href="#" class="delete" data-id=${index}></a></li>`;
             }
         }else if(targetState == "notDone"){
             if(item.checked == false){
-                str += `<li><label class="checkbox" for=""><input type="checkbox" ${item.checked} data-id=${index}/><span>${item.todoText}</span></label><a href="#" class="delete"></a></li>`;
+                str += `<li><label class="checkbox" for=""><input type="checkbox" ${item.checked} data-id=${index} /><span>${item.todoText}</span></label><a href="#" class="delete" data-id=${index}></a></li>`;
             }
         }else if(targetState == "hadDone"){
             if(item.checked == true){
-                str += `<li><label class="checkbox" for=""><input type="checkbox" ${item.checked} data-id=${index} checked/><span>${item.todoText}</span></label><a href="#" class="delete"></a></li>`;
+                str += `<li><label class="checkbox" for=""><input type="checkbox" ${item.checked} data-id=${index} checked/><span>${item.todoText}</span></label><a href="#" class="delete" data-id=${index}></a></li>`;
             }
         }
     }); 
